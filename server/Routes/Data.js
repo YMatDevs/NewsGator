@@ -3,8 +3,8 @@ import express from 'express';
 const router = express.Router();
 
 // Importing Services
-import flushArticles from '../Services/flushArticles';
-import { updateNewsArticles } from '../Services/updateNewsArticles';
+import flushArticles from '../Services/flushArticles.js';
+import { updateNewsArticles } from '../Services/updateNewsArticles.js';
 
 
 

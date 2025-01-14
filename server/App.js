@@ -10,7 +10,8 @@ import passport from 'passport';
 import session from 'express-session';
 // import { JsonWebTokenError } from 'jsonwebtoken';
 import mongoose from 'mongoose';
-import  nodemailer from 'nodemailer';
+import path from 'path';
+import { fileURLToPath } from 'url';
 
 
 const app = express();
@@ -31,24 +32,29 @@ app.use(morgan('common'));
 app.use(helmet());
 app.use(cookieParser());
 
+// Setting View Engine
+const   __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+
+app.use(express.static(path.resolve(__dirname, '../client/dist'))); 
+app.get("*", (req, res) => {
+  res.sendFile(path.resolve(__dirname, "../frontend/dist", "index.html"));
+});
+
 // Add Passport Authentication
 // Use express Session
-
-
-
-
-
-// Importing Functions
-import { updateNewsArticles } from './Services/updateNewsArticles.js';
 
 
 
 // Routes
 import dataRoutes from './Routes/Data.js';
 import userRoutes from './Routes/Users.js';
+// import authRoutes from './Routes/Auth.js';
 
+// Using the Routes
 app.use('/data', dataRoutes);
 app.use('/user', userRoutes);
+// app.use('/auth', authRoutes);
 
 
 const port = process.env.port || 3000;

@@ -83,5 +83,5 @@ async function updateNewsArticles()
 
 }
 
-export { updateNewsArticles };
+export { updateNewsArticles };  
 

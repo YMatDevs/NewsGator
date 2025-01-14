@@ -1,14 +1,17 @@
 
 //Importing Models
-import { Article } from '../Database/Schemas';
+import { Article } from '../Database/Schemas.js';
 
 
 async function flushArticles()
 {
-    const result = await Article.deleteMany({})
-    .then(() => { console.log(`${result.deletedCount} documents from Collection Article have been deleted`)})
-    .catch(error => { console.log(`Error in flushing DB: ${error}`)});
-
+    try {
+        const result = await Article.deleteMany({});
+        console.log(`${result.deletedCount} documents from Collection Article have been deleted`);
+    }
+    catch (error) {
+        console.log(`Errpr in flushing DB: ${error}`);
+    }
 }
 
 export default flushArticles;
