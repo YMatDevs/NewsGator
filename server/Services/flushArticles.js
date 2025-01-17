@@ -1,6 +1,6 @@
 
 //Importing Models
-import { Article } from '../Database/Schemas.js';
+import {Article, User} from '../Database/Schemas.js';
 
 
 async function flushArticles()

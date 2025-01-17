@@ -1,4 +1,4 @@
-import { Article } from "../Database/Schemas.js";
+import { Article, User } from "../Database/Schemas.js";
 
 async function get5Articles()
 {

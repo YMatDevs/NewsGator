@@ -1,15 +1,12 @@
-
-function isLoggedIn(req, res, next)
-{
-    if(req.session.user) {
-        return next();
-    }
-    res.redirect('/user/login');    
+function isAuthenticated(req, res, next) {
+  if (req.session && req.session.user) {
+    return next(); // User is authenticated, proceed to the next middleware/route
+  }
+  return res
+    .status(401)
+    .json({ message: "Unauthorized access. Please log in." });
 }
 
-function verifyUser(email, password)
-{
-    return ( email === 'admin' && password === 'admin' );
-}
 
-export { isLoggedIn, verifyUser };
+
+export default isAuthenticated;

@@ -9,5 +9,15 @@
   <body>
     <div id="root"></div>
     <script type="module" src="/src/main.jsx"></script>
+    <script>
+  // Check if the URL starts with '/auth' or '/content'
+  const currentUrl = window.location.pathname;
+
+  if (!currentUrl.startsWith('/auth') && !currentUrl.startsWith('/content')) {
+    // Redirect to a default or error page
+    window.location.href = '/auth';  // Redirect to error page
+  }
+</script>
+
   </body>
 </html>

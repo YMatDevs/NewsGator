@@ -17,7 +17,7 @@ function sendEmail(to, subject, text)
     from: "yashm.devs@gmail.com",
     to,
     subject,
-    text,
+    html: text,
   };
 
   return transporter.sendMail(mailOptions);

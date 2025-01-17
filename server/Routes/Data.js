@@ -1,6 +1,8 @@
 import express from 'express';
-
+import isAuthenticated from '../Services/authenticate.js';
 const router = express.Router();
+
+router.use(isAuthenticated);
 
 // Importing Services
 import flushArticles from '../Services/flushArticles.js';
